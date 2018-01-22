@@ -19,5 +19,6 @@ namespace ARCC
 
 	private:
 		
+		void burgerclick(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
 	};
 }

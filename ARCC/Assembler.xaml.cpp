@@ -6,6 +6,13 @@
 #include "pch.h"
 #include "Assembler.xaml.h"
 
+using namespace Windows::Storage;
+using namespace Windows::Storage::Pickers;
+using namespace Windows::Storage::Provider;
+using namespace Platform::Collections;
+using namespace concurrency;
+using namespace std;
+
 using namespace ARCC;
 
 using namespace Platform;
@@ -30,6 +37,8 @@ using namespace Windows::UI::Xaml::Navigation;
 #include <iostream>
 #include <algorithm>
 #include <iomanip>
+
+using namespace std;
 
 Assembler::Assembler()
 {
@@ -112,7 +121,7 @@ void ARCC::Assembler::closeClicked(Platform::Object^ sender, Windows::UI::Xaml::
 // -- handles dynamic allocation of box options based on argument widths
 void ARCC::Assembler::dynamicRealloc(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
 {
-	debugConsole("reloading\n");
+	//debugConsole("reloading\n");
 
 	// types are specified by width then B for byte, or some constant types specified in the script
 	// grab the script
@@ -237,7 +246,7 @@ void ARCC::Assembler::dynamicRealloc(Platform::Object^ sender, Windows::UI::Xaml
 		}
 
 	}
-	debugConsole("Done");
+	//debugConsole("Done");
 }
 
 // -- handle instruction bar dynamic generation 
@@ -371,7 +380,7 @@ void ARCC::Assembler::setGen(Platform::Object^ sender, Windows::UI::Xaml::Routed
 	//sScript.erase(std::remove(sScript.begin(), sScript.end(), '\r'), sScript.end());
 
 	v.append(sScript + '\n');
-	debugConsole(sScript + '\n');
+	//debugConsole(sScript + '\n');
 
 	// go through each relative panel and add its data
 	for (unsigned int i = 0; i < instrucArgs.size(); i++) {
@@ -397,7 +406,7 @@ void ARCC::Assembler::setGen(Platform::Object^ sender, Windows::UI::Xaml::Routed
 		}
 
 		// plug the contents into the console and variable
-		debugConsole(frontPorch + "//" + RearPorch + "\n");
+		//debugConsole(frontPorch + "//" + RearPorch + "\n");
 		Platform::String ^ temp = frontPorch + "//" + RearPorch + "\n";
 
 		std::wstring wTemp(temp->Data());
@@ -449,7 +458,7 @@ void ARCC::Assembler::loadIx(Platform::Object^ sender, Windows::UI::Xaml::Routed
 		if (file)
 		{
 			// file was opened
-			debugConsole("Reading File");
+			//debugConsole("Reading File");
 			// create new lambda task for reading the file
 			create_task(FileIO::ReadTextAsync(file)).then([this, file](task<String^> task) {
 				// grab the contents and send it to the parsing function
@@ -460,7 +469,7 @@ void ARCC::Assembler::loadIx(Platform::Object^ sender, Windows::UI::Xaml::Routed
 		else
 		{
 			// opening failed - text the console
-			debugConsole("Open Failed\n");
+			//debugConsole("Open Failed\n");
 		}
 	});
 	// its ASYNC so this function will return immediately
@@ -469,7 +478,7 @@ void ARCC::Assembler::loadIx(Platform::Object^ sender, Windows::UI::Xaml::Routed
 // -- handles decoding and application for editing
 void ARCC::Assembler::decodeIx(String^ file) {
 	// shunt it to the console for debugging
-	debugConsole(file);
+	//debugConsole(file);
 
 	// WOOO!!! lets DeCODE!
 	wstring Wfile(file->Data());		//converts it to a wstring array
@@ -490,25 +499,25 @@ void ARCC::Assembler::decodeIx(String^ file) {
 		// sadly this will use if/else as switch doesnt work on strings
 		// i know its ugly, im sorry, ill use a dictionary later
 		if (&seg == nullptr) {
-			debugConsole("error");
+			//debugConsole("error");
 		}
 		else if (seg == "") {
-			debugConsole("Empty Line");
+			//debugConsole("Empty Line");
 		}
 		else if (seg == "//") {
-			debugConsole("Comment");
+			//debugConsole("Comment");
 			script->Text += toPlat(line + '\n');
 		}
 		else if (seg == ".type") {
-			debugConsole("type decl");
+			//debugConsole("type decl");
 			script->Text += toPlat(line + '\n');
 		}
 		else if (seg == ".equ") {
-			debugConsole("constant decl");
+			//debugConsole("constant decl");
 			script->Text += toPlat(line + '\n');
 		}
 		else if (seg[0] == '<') {
-			debugConsole("New Instruction");
+			//debugConsole("New Instruction");
 			//get its features
 			string instr, arg1, arg2, w, bq;
 			stringstream sseg(seg);
@@ -732,7 +741,7 @@ void ARCC::Assembler::LoadIS(Platform::Object^ sender, Windows::UI::Xaml::Routed
 		if (file)
 		{
 			// file was opened
-			debugConsole("Reading File");
+			//debugConsole("Reading File");
 			String^ name = file->DisplayName;
 			// create new lambda task for reading the file
 			create_task(FileIO::ReadTextAsync(file)).then([this, file, name](task<String^> task) {
@@ -744,7 +753,7 @@ void ARCC::Assembler::LoadIS(Platform::Object^ sender, Windows::UI::Xaml::Routed
 		else
 		{
 			// opening failed - text the console
-			debugConsole("Open Failed\n");
+			//debugConsole("Open Failed\n");
 		}
 	});
 	// its ASYNC so this function will return immediately
@@ -775,7 +784,7 @@ void ARCC::Assembler::openIQ(String^ file, String^ name) {
 		// sadly this will use if/else as switch doesnt work on strings
 		// i know its ugly, im sorry, ill use a dictionary later
 		if (&seg == nullptr) {
-			debugConsole("error");	// error
+			//debugConsole("error");	// error
 		}
 		else if (seg[0] == '<') {
 			// instruction
@@ -805,7 +814,7 @@ void ARCC::Assembler::OpenAsmFile(Platform::Object^ sender, Windows::UI::Xaml::R
 		if (file)
 		{
 			// file was opened
-			debugConsole("Reading File");
+			//debugConsole("Reading File");
 			// create new lambda task for reading the file
 			create_task(FileIO::ReadTextAsync(file)).then([this, file](task<String^> task) {
 				// grab the contents and send it to the parsing function
@@ -816,7 +825,7 @@ void ARCC::Assembler::OpenAsmFile(Platform::Object^ sender, Windows::UI::Xaml::R
 		else
 		{
 			// opening failed - text the console
-			debugConsole("Open Failed\n");
+			///debugConsole("Open Failed\n");
 		}
 	});
 	// its ASYNC so this function will return immediately
@@ -977,7 +986,7 @@ void ARCC::Assembler::generateMC(Platform::Object^ sender, Windows::UI::Xaml::Ro
 		IS.push_back(temp);
 	}
 
-	debugConsole("break");
+	//debugConsole("break");
 
 	// okay now lets encode the entered string into machine languge with the encoder dictionary
 	// lets grab the incoming text
@@ -1182,7 +1191,7 @@ void ARCC::Assembler::fileGenOT(string name) {
 		}
 
 		mifOut += "END;\r\n";
-		debugConsole(mifOut);
+		//debugConsole(mifOut);
 
 		auto savePicker = ref new FileSavePicker();
 		savePicker->SuggestedStartLocation = Windows::Storage::Pickers::PickerLocationId::DocumentsLibrary;

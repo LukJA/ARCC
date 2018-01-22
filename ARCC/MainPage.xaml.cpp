@@ -25,6 +25,7 @@ using namespace Windows::UI::Xaml::Data;
 using namespace Windows::UI::Xaml::Input;
 using namespace Windows::UI::Xaml::Media;
 using namespace Windows::UI::Xaml::Navigation;
+using namespace Windows::UI::Xaml::Interop;
 
 #include <fstream>
 #include <vector>
@@ -41,4 +42,11 @@ using namespace Windows::UI::Xaml::Navigation;
 MainPage::MainPage()
 {
 	InitializeComponent();
+	LaFrame->Navigate(TypeName(Assembler::typeid));
+}
+
+
+void ARCC::MainPage::burgerclick(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+{
+	spv->IsPaneOpen = !spv->IsPaneOpen;
 }
