@@ -7,97 +7,64 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <SplitView IsPaneOpen="True" DisplayMode="Inline" OpenPaneLength="100">
-        <SplitView.Pane>
-            <StackPanel>
-                <Button Content="Compiler" HorizontalAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}" FocusVisualPrimaryBrush="{x:Null}" Width="78"/>
-                <BitmapIcon UriSource="Assets/LockScreenLogo.png"></BitmapIcon>
-                <Button Content="Two" FocusVisualPrimaryBrush="#FF783B3B"></Button>
-            </StackPanel>
-        </SplitView.Pane>
-        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="17*"/>
-                <RowDefinition Height="73*"/>
-            </Grid.RowDefinitions>
-            <Pivot x:Name="rootPivot" Margin="0" Background="Transparent" Grid.RowSpan="2">
-                <PivotItem Header="Compiler" Margin="0" Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}">
-                    <!--Pivot content goes here-->
-                    <Frame x:Name="cmpFrame" HorizontalAlignment="Left" VerticalAlignment="Top">
-                        <!--Pivot content goes here-->
-                        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-                        </Grid>
-                    </Frame>
-                </PivotItem>
-                <PivotItem Header="Assembler" Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}">
-                    <!--Pivot content goes here-->
-                    <Frame x:Name="asmFrame" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-                        <!--Pivot content goes here-->
-                        <Grid Padding="0,0,0,10" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                            <RelativePanel x:Name="boqqq" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-                                <RelativePanel x:Name="Tools" Padding="5">
-                                    <Button x:Name="ASSLoad" Content="Open" Margin="0,0,5,0" Click="OpenAsmFile" />
-                                    <Button x:Name="ASSsave" Content="Save" Margin="0,0,5,0"  RelativePanel.RightOf="ASSLoad" Click="SaveASM" />
-                                    <Button x:Name="ISLoad" Content="Load IS" Margin="0,0,0,0" Click="LoadIS" RelativePanel.RightOf="ASSsave"/>
-                                    <TextBox x:Name="Len" Text="Length" RelativePanel.RightOf="ISLoad" Padding="5,3"/>
-                                    <TextBlock x:Name="fX" Text="FileName.txt" RelativePanel.RightOf="Len" Margin="5,0,5,0" RelativePanel.AlignVerticalCenterWith="ISLoad"/>
-                                    <Button x:Name="ASGen" Content="Gen" RelativePanel.RightOf="fX" Click="generateMC"/>
-                                    <CheckBox x:Name="MIF" Content="mif" RelativePanel.RightOf="ASGen" Margin="5,0,0,0" MinWidth="20" Checked="Mcheck" Unchecked="MUcheck"/>
-                                    <CheckBox x:Name="BIN" Content="bin" RelativePanel.RightOf="MIF" Margin="5,0,0,0" MinWidth="20" Checked="Bcheck" Unchecked="BUcheck"/>
-                                </RelativePanel>
-                                <ScrollViewer x:Name="in" Margin="5,0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" RelativePanel.Below="Tools"  RelativePanel.AlignBottomWithPanel="True" HorizontalScrollMode="Disabled" ViewChanged="VC">
-                                    <TextBox x:Name="inT" AcceptsReturn="True"  Text="" IsSpellCheckEnabled="False" IsTextPredictionEnabled="False" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" RelativePanel.Below="Tools"  RelativePanel.AlignBottomWithPanel="True" MinWidth="128" Padding="5,3"/>
-                                </ScrollViewer>
-                                <ScrollViewer x:Name="LineNo" Margin="5,0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" RelativePanel.Below="Tools"  RelativePanel.AlignBottomWithPanel="True" RelativePanel.RightOf="in" VerticalScrollBarVisibility="Disabled">
-                                    <TextBox x:Name="LineNoT"  Text="" AcceptsReturn="True" IsSpellCheckEnabled="False" IsTextPredictionEnabled="False" Margin="5,0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" RelativePanel.Below="Tools" RelativePanel.RightOf="in" RelativePanel.AlignBottomWithPanel="True" MinWidth="31" Padding="5,3" MaxWidth="31"/>
-                                </ScrollViewer>
-                                <ScrollViewer x:Name="out" Margin="5,0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" RelativePanel.Below="Tools"  RelativePanel.AlignBottomWithPanel="True" RelativePanel.RightOf="LineNo" VerticalScrollBarVisibility="Disabled">
-                                    <TextBox x:Name="outT" AcceptsReturn="True"  Text="" IsSpellCheckEnabled="False" IsTextPredictionEnabled="False" Margin="0" RelativePanel.RightOf="LineNo" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" RelativePanel.Below="Tools"  RelativePanel.AlignBottomWithPanel="True" MinWidth="128" Padding="5,3" />
-                                </ScrollViewer>
-                            </RelativePanel>
-                        </Grid>
-                    </Frame>
-                </PivotItem>
-                <PivotItem Header="Instruction Set" Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}">
-                    <!--Pivot content goes here-->
-                    <Frame x:Name="insFrame" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-                        <!--Pivot content goes here-->
-                        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-                            <ScrollViewer>
-                                <StackPanel x:Name="globalStack">
-                                    <StackPanel x:Name="stackPanel" >
-                                        <RelativePanel x:Name="topBar" Padding="5">
-                                            <Button x:Name="button" RelativePanel.RightOf="reload" Click="button_Click" Content="New Instruction" Margin="5,0,0,0"/>
-                                            <Button x:Name="reload" Click="dynamicRealloc" Content="REL" Margin="0,0,0,0"/>
-                                            <ComboBox x:Name="width" RelativePanel.RightOf="button">
-                                                <ComboBoxItem Content="4"/>
-                                                <ComboBoxItem Content="8"/>
-                                                <ComboBoxItem Content="12"/>
-                                                <ComboBoxItem Content="16"/>
-                                            </ComboBox>
-                                            <Button x:Name="generate" Content="Generate" Margin="5,0,5,0" Click="setGen" RelativePanel.RightOf="width" />
-                                            <Button x:Name="Load" Content="Load" RelativePanel.RightOf="generate" Margin="5,0,5,0" Click="loadIx"/>
-                                        </RelativePanel>
-                                    </StackPanel>
-                                    <TextBox x:Name="script" AcceptsReturn="True"  Text="" IsSpellCheckEnabled="False" IsTextPredictionEnabled="False" Margin="5,0"/>
-                                </StackPanel>
-                            </ScrollViewer>
-                        </Grid>
-                    </Frame>
-                </PivotItem>
-                <PivotItem Header="Debug" Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}">
-                    <!--Pivot content goes here-->
-                    <Frame x:Name="helpFrame" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                        <Grid Padding="0,0,0,10" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                            <!--Pivot content goes here-->
-                            <RelativePanel x:Name="helpStack" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-                                <TextBlock x:Name="tb1" Text="Help and About"/>
-                                <TextBox RelativePanel.AlignBottomWithPanel="True" RelativePanel.Below="tb1" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True"   x:Name="console" Text=""  AcceptsReturn="True"  IsSpellCheckEnabled="False" IsTextPredictionEnabled="False" PlaceholderText="Console&gt;&gt;" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
-                            </RelativePanel>
-                        </Grid>
-                    </Frame>
-                </PivotItem>
-            </Pivot>
-        </Grid>
-    </SplitView>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <SplitView x:Name="spv" DisplayMode="CompactOverlay" CompactPaneLength="50" OpenPaneLength="200" >
+            <SplitView.Pane>
+                <RelativePanel>
+                    <StackPanel>
+                        <Button x:Name="HamburgerButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" Width="50" Height="48" Background="Transparent" Click="burgerclick" Style="{StaticResource ButtonStyleNewClean}" FontSize="18" />
+                        <StackPanel Orientation="Horizontal">
+                            <Button x:Name="MenuButton1" FontFamily="Segoe MDL2 Assets" Content="&#xE71B;" Width="50" Height="50" Background="Transparent" Style="{StaticResource ButtonStyleNewClean}" FontSize="20" />
+                            <TextBlock Text="Compiler" FontSize="18" VerticalAlignment="Center" Margin="20,0,0,0" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Button x:Name="MenuButton2" FontFamily="Segoe MDL2 Assets" Content="&#xE8AF;" Width="50" Height="50" Background="Transparent" Style="{StaticResource ButtonStyleNewClean}" FontSize="20" />
+                            <TextBlock Text="Assembler" FontSize="18" VerticalAlignment="Center" Margin="16,0,0,0" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Button x:Name="MenuButton3" FontFamily="Segoe MDL2 Assets" Content="&#xE70F;" Width="50" Height="50" Background="Transparent" Style="{StaticResource ButtonStyleNewClean}" FontSize="20" />
+                            <TextBlock Text="Editor" FontSize="18" VerticalAlignment="Center" Margin="30,0,0,0" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Button x:Name="MenuButton4" FontFamily="Segoe MDL2 Assets" Content="&#xE895;" Width="50" Height="50" Background="Transparent" Style="{StaticResource ButtonStyleNewClean}" FontSize="20" />
+                            <TextBlock Text="Debug" FontSize="18" VerticalAlignment="Center" Margin="27,0,0,0" />
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" RelativePanel.AlignBottomWithPanel="True">
+                        <Button x:Name="settings" FontFamily="Segoe MDL2 Assets" Content="&#xE713;" Width="50" Height="50" Background="Transparent" Style="{StaticResource ButtonStyleNewClean}" FontSize="20" />
+                        <TextBlock Text="Settings" FontSize="18" VerticalAlignment="Center" Margin="27,0,0,0" />
+                    </StackPanel>
+                </RelativePanel>
+            </SplitView.Pane>
+            <SplitView.Content>
+                <RelativePanel>
+                    <CommandBar x:Name="Cbar" UseLayoutRounding="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True">
+                        <CommandBar.Background>
+                            <SolidColorBrush Color="#FF1F1F1F"/>
+                        </CommandBar.Background>
+
+                        <AppBarButton Icon="OpenFile" Label="Open" />
+                        <AppBarButton Icon="Save" Label="Save" />
+                        <AppBarButton Icon="Cancel" Label="Forward" />
+                        <AppBarSeparator/>
+                        <AppBarButton Icon="Play" Label="Run" />
+                        <AppBarButton Icon="Stop" Label="Stop" />
+                        <AppBarSeparator/>
+                        <AppBarToggleButton Icon="SetTile" Label="HEX" />
+                        <AppBarToggleButton Icon="SetTile" Label="MIF" />
+                        <AppBarToggleButton Icon="SetTile" Label="ASM" />
+
+                        <CommandBar.SecondaryCommands>
+                            <AppBarButton Icon="Like" Label="Like" />
+                            <AppBarButton Icon="Dislike" Label="Dislike" />
+                        </CommandBar.SecondaryCommands>
+
+                    </CommandBar>
+                    <Frame x:Name="LaFrame" RelativePanel.Below="Cbar" RelativePanel.Above="Lbar" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True"/>
+                    <Rectangle x:Name="Lbar" Fill="{ThemeResource AppBarBackground}" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" Height="30"/>
+                </RelativePanel>
+            </SplitView.Content>
+        </SplitView>
+
+    </Grid>
 </Page>

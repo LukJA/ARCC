@@ -11,16 +11,19 @@ namespace Windows {
     namespace UI {
         namespace Xaml {
             namespace Controls {
-                ref class Pivot;
-                ref class Frame;
-                ref class RelativePanel;
-                ref class TextBlock;
-                ref class TextBox;
-                ref class StackPanel;
+                ref class SplitView;
                 ref class Button;
-                ref class ComboBox;
-                ref class ScrollViewer;
-                ref class CheckBox;
+                ref class CommandBar;
+                ref class Frame;
+            }
+        }
+    }
+}
+namespace Windows {
+    namespace UI {
+        namespace Xaml {
+            namespace Shapes {
+                ref class Rectangle;
             }
         }
     }
@@ -41,39 +44,16 @@ namespace ARCC
     private:
         bool _contentLoaded;
     
-        private: ::Windows::UI::Xaml::Controls::Pivot^ rootPivot;
-        private: ::Windows::UI::Xaml::Controls::Frame^ helpFrame;
-        private: ::Windows::UI::Xaml::Controls::RelativePanel^ helpStack;
-        private: ::Windows::UI::Xaml::Controls::TextBlock^ tb1;
-        private: ::Windows::UI::Xaml::Controls::TextBox^ console;
-        private: ::Windows::UI::Xaml::Controls::Frame^ insFrame;
-        private: ::Windows::UI::Xaml::Controls::StackPanel^ globalStack;
-        private: ::Windows::UI::Xaml::Controls::StackPanel^ stackPanel;
-        private: ::Windows::UI::Xaml::Controls::TextBox^ script;
-        private: ::Windows::UI::Xaml::Controls::RelativePanel^ topBar;
-        private: ::Windows::UI::Xaml::Controls::Button^ button;
-        private: ::Windows::UI::Xaml::Controls::Button^ reload;
-        private: ::Windows::UI::Xaml::Controls::ComboBox^ width;
-        private: ::Windows::UI::Xaml::Controls::Button^ generate;
-        private: ::Windows::UI::Xaml::Controls::Button^ Load;
-        private: ::Windows::UI::Xaml::Controls::Frame^ asmFrame;
-        private: ::Windows::UI::Xaml::Controls::RelativePanel^ boqqq;
-        private: ::Windows::UI::Xaml::Controls::RelativePanel^ Tools;
-        private: ::Windows::UI::Xaml::Controls::ScrollViewer^ in;
-        private: ::Windows::UI::Xaml::Controls::ScrollViewer^ LineNo;
-        private: ::Windows::UI::Xaml::Controls::ScrollViewer^ out;
-        private: ::Windows::UI::Xaml::Controls::TextBox^ outT;
-        private: ::Windows::UI::Xaml::Controls::TextBox^ LineNoT;
-        private: ::Windows::UI::Xaml::Controls::TextBox^ inT;
-        private: ::Windows::UI::Xaml::Controls::Button^ ASSLoad;
-        private: ::Windows::UI::Xaml::Controls::Button^ ASSsave;
-        private: ::Windows::UI::Xaml::Controls::Button^ ISLoad;
-        private: ::Windows::UI::Xaml::Controls::TextBox^ Len;
-        private: ::Windows::UI::Xaml::Controls::TextBlock^ fX;
-        private: ::Windows::UI::Xaml::Controls::Button^ ASGen;
-        private: ::Windows::UI::Xaml::Controls::CheckBox^ MIF;
-        private: ::Windows::UI::Xaml::Controls::CheckBox^ BIN;
-        private: ::Windows::UI::Xaml::Controls::Frame^ cmpFrame;
+        private: ::Windows::UI::Xaml::Controls::SplitView^ spv;
+        private: ::Windows::UI::Xaml::Controls::Button^ settings;
+        private: ::Windows::UI::Xaml::Controls::Button^ HamburgerButton;
+        private: ::Windows::UI::Xaml::Controls::Button^ MenuButton4;
+        private: ::Windows::UI::Xaml::Controls::Button^ MenuButton3;
+        private: ::Windows::UI::Xaml::Controls::Button^ MenuButton2;
+        private: ::Windows::UI::Xaml::Controls::Button^ MenuButton1;
+        private: ::Windows::UI::Xaml::Controls::CommandBar^ Cbar;
+        private: ::Windows::UI::Xaml::Controls::Frame^ LaFrame;
+        private: ::Windows::UI::Xaml::Shapes::Rectangle^ Lbar;
     };
 }
 
