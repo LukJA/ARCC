@@ -54,153 +54,148 @@ void ::ARCC::MainPage::Connect(int __connectionId, ::Platform::Object^ __target)
             break;
         case 6:
             {
-                this->simFrame = safe_cast<::Windows::UI::Xaml::Controls::Frame^>(__target);
+                this->insFrame = safe_cast<::Windows::UI::Xaml::Controls::Frame^>(__target);
             }
             break;
         case 7:
             {
-                this->insFrame = safe_cast<::Windows::UI::Xaml::Controls::Frame^>(__target);
+                this->globalStack = safe_cast<::Windows::UI::Xaml::Controls::StackPanel^>(__target);
             }
             break;
         case 8:
             {
-                this->globalStack = safe_cast<::Windows::UI::Xaml::Controls::StackPanel^>(__target);
+                this->stackPanel = safe_cast<::Windows::UI::Xaml::Controls::StackPanel^>(__target);
             }
             break;
         case 9:
             {
-                this->stackPanel = safe_cast<::Windows::UI::Xaml::Controls::StackPanel^>(__target);
+                this->script = safe_cast<::Windows::UI::Xaml::Controls::TextBox^>(__target);
             }
             break;
         case 10:
             {
-                this->script = safe_cast<::Windows::UI::Xaml::Controls::TextBox^>(__target);
-            }
-            break;
-        case 11:
-            {
                 this->topBar = safe_cast<::Windows::UI::Xaml::Controls::RelativePanel^>(__target);
             }
             break;
-        case 12:
+        case 11:
             {
                 this->button = safe_cast<::Windows::UI::Xaml::Controls::Button^>(__target);
                 (safe_cast<::Windows::UI::Xaml::Controls::Button^>(this->button))->Click += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::ARCC::MainPage::*)
                     (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::button_Click);
             }
             break;
-        case 13:
+        case 12:
             {
                 this->reload = safe_cast<::Windows::UI::Xaml::Controls::Button^>(__target);
                 (safe_cast<::Windows::UI::Xaml::Controls::Button^>(this->reload))->Click += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::ARCC::MainPage::*)
                     (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::dynamicRealloc);
             }
             break;
-        case 14:
+        case 13:
             {
                 this->width = safe_cast<::Windows::UI::Xaml::Controls::ComboBox^>(__target);
             }
             break;
-        case 15:
+        case 14:
             {
                 this->generate = safe_cast<::Windows::UI::Xaml::Controls::Button^>(__target);
                 (safe_cast<::Windows::UI::Xaml::Controls::Button^>(this->generate))->Click += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::ARCC::MainPage::*)
                     (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::setGen);
             }
             break;
-        case 16:
+        case 15:
             {
                 this->Load = safe_cast<::Windows::UI::Xaml::Controls::Button^>(__target);
                 (safe_cast<::Windows::UI::Xaml::Controls::Button^>(this->Load))->Click += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::ARCC::MainPage::*)
                     (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::loadIx);
             }
             break;
-        case 17:
+        case 16:
             {
                 this->asmFrame = safe_cast<::Windows::UI::Xaml::Controls::Frame^>(__target);
             }
             break;
-        case 18:
+        case 17:
             {
                 this->boqqq = safe_cast<::Windows::UI::Xaml::Controls::RelativePanel^>(__target);
             }
             break;
-        case 19:
+        case 18:
             {
                 this->Tools = safe_cast<::Windows::UI::Xaml::Controls::RelativePanel^>(__target);
             }
             break;
-        case 20:
+        case 19:
             {
                 this->in = safe_cast<::Windows::UI::Xaml::Controls::ScrollViewer^>(__target);
                 (safe_cast<::Windows::UI::Xaml::Controls::ScrollViewer^>(this->in))->ViewChanged += ref new ::Windows::Foundation::EventHandler<::Windows::UI::Xaml::Controls::ScrollViewerViewChangedEventArgs^>(this, (void (::ARCC::MainPage::*)
                     (::Platform::Object^, ::Windows::UI::Xaml::Controls::ScrollViewerViewChangedEventArgs^))&MainPage::VC);
             }
             break;
-        case 21:
+        case 20:
             {
                 this->LineNo = safe_cast<::Windows::UI::Xaml::Controls::ScrollViewer^>(__target);
             }
             break;
-        case 22:
+        case 21:
             {
                 this->out = safe_cast<::Windows::UI::Xaml::Controls::ScrollViewer^>(__target);
             }
             break;
-        case 23:
+        case 22:
             {
                 this->outT = safe_cast<::Windows::UI::Xaml::Controls::TextBox^>(__target);
             }
             break;
-        case 24:
+        case 23:
             {
                 this->LineNoT = safe_cast<::Windows::UI::Xaml::Controls::TextBox^>(__target);
             }
             break;
-        case 25:
+        case 24:
             {
                 this->inT = safe_cast<::Windows::UI::Xaml::Controls::TextBox^>(__target);
             }
             break;
-        case 26:
+        case 25:
             {
                 this->ASSLoad = safe_cast<::Windows::UI::Xaml::Controls::Button^>(__target);
                 (safe_cast<::Windows::UI::Xaml::Controls::Button^>(this->ASSLoad))->Click += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::ARCC::MainPage::*)
                     (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::OpenAsmFile);
             }
             break;
-        case 27:
+        case 26:
             {
                 this->ASSsave = safe_cast<::Windows::UI::Xaml::Controls::Button^>(__target);
                 (safe_cast<::Windows::UI::Xaml::Controls::Button^>(this->ASSsave))->Click += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::ARCC::MainPage::*)
                     (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::SaveASM);
             }
             break;
-        case 28:
+        case 27:
             {
                 this->ISLoad = safe_cast<::Windows::UI::Xaml::Controls::Button^>(__target);
                 (safe_cast<::Windows::UI::Xaml::Controls::Button^>(this->ISLoad))->Click += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::ARCC::MainPage::*)
                     (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::LoadIS);
             }
             break;
-        case 29:
+        case 28:
             {
                 this->Len = safe_cast<::Windows::UI::Xaml::Controls::TextBox^>(__target);
             }
             break;
-        case 30:
+        case 29:
             {
                 this->fX = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
             }
             break;
-        case 31:
+        case 30:
             {
                 this->ASGen = safe_cast<::Windows::UI::Xaml::Controls::Button^>(__target);
                 (safe_cast<::Windows::UI::Xaml::Controls::Button^>(this->ASGen))->Click += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::ARCC::MainPage::*)
                     (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::generateMC);
             }
             break;
-        case 32:
+        case 31:
             {
                 this->MIF = safe_cast<::Windows::UI::Xaml::Controls::CheckBox^>(__target);
                 (safe_cast<::Windows::UI::Xaml::Controls::CheckBox^>(this->MIF))->Checked += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::ARCC::MainPage::*)
@@ -209,13 +204,18 @@ void ::ARCC::MainPage::Connect(int __connectionId, ::Platform::Object^ __target)
                     (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::MUcheck);
             }
             break;
-        case 33:
+        case 32:
             {
                 this->BIN = safe_cast<::Windows::UI::Xaml::Controls::CheckBox^>(__target);
                 (safe_cast<::Windows::UI::Xaml::Controls::CheckBox^>(this->BIN))->Checked += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::ARCC::MainPage::*)
                     (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::Bcheck);
                 (safe_cast<::Windows::UI::Xaml::Controls::CheckBox^>(this->BIN))->Unchecked += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::ARCC::MainPage::*)
                     (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::BUcheck);
+            }
+            break;
+        case 33:
+            {
+                this->cmpFrame = safe_cast<::Windows::UI::Xaml::Controls::Frame^>(__target);
             }
             break;
     }

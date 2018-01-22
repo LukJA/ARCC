@@ -7,83 +7,97 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Pivot x:Name="rootPivot" Margin="2,0,-2,0">
-            <PivotItem Header="Assembler" Background="White">
-                <!--Pivot content goes here-->
-                <Frame x:Name="asmFrame" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+    <SplitView IsPaneOpen="True" DisplayMode="Inline" OpenPaneLength="100">
+        <SplitView.Pane>
+            <StackPanel>
+                <Button Content="Compiler" HorizontalAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}" FocusVisualPrimaryBrush="{x:Null}" Width="78"/>
+                <BitmapIcon UriSource="Assets/LockScreenLogo.png"></BitmapIcon>
+                <Button Content="Two" FocusVisualPrimaryBrush="#FF783B3B"></Button>
+            </StackPanel>
+        </SplitView.Pane>
+        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="17*"/>
+                <RowDefinition Height="73*"/>
+            </Grid.RowDefinitions>
+            <Pivot x:Name="rootPivot" Margin="0" Background="Transparent" Grid.RowSpan="2">
+                <PivotItem Header="Compiler" Margin="0" Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}">
                     <!--Pivot content goes here-->
-                    <Grid Padding="0,0,0,10" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                        <RelativePanel x:Name="boqqq" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-                            <RelativePanel x:Name="Tools" Padding="5">
-                                <Button x:Name="ASSLoad" Content="Open" Margin="0,0,5,0" Click="OpenAsmFile" />
-                                <Button x:Name="ASSsave" Content="Save" Margin="0,0,5,0"  RelativePanel.RightOf="ASSLoad" Click="SaveASM" />
-                                <Button x:Name="ISLoad" Content="Load IS" Margin="0,0,0,0" Click="LoadIS" RelativePanel.RightOf="ASSsave"/>
-                                <TextBox x:Name="Len" Text="Length" RelativePanel.RightOf="ISLoad" Padding="5,3"/>
-                                <TextBlock x:Name="fX" Text="FileName.txt" RelativePanel.RightOf="Len" Margin="5,0,5,0" RelativePanel.AlignVerticalCenterWith="ISLoad"/>
-                                <Button x:Name="ASGen" Content="Gen" RelativePanel.RightOf="fX" Click="generateMC"/>
-                                <CheckBox x:Name="MIF" Content="mif" RelativePanel.RightOf="ASGen" Margin="5,0,0,0" MinWidth="20" Checked="Mcheck" Unchecked="MUcheck"/>
-                                <CheckBox x:Name="BIN" Content="bin" RelativePanel.RightOf="MIF" Margin="5,0,0,0" MinWidth="20" Checked="Bcheck" Unchecked="BUcheck"/>
-                            </RelativePanel>
-                            <ScrollViewer x:Name="in" Margin="5,0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" RelativePanel.Below="Tools"  RelativePanel.AlignBottomWithPanel="True" HorizontalScrollMode="Disabled" ViewChanged="VC">
-                                <TextBox x:Name="inT" AcceptsReturn="True"  Text="" IsSpellCheckEnabled="False" IsTextPredictionEnabled="False" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" RelativePanel.Below="Tools"  RelativePanel.AlignBottomWithPanel="True" MinWidth="128" Padding="5,3"/>
-                            </ScrollViewer>
-                            <ScrollViewer x:Name="LineNo" Margin="5,0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" RelativePanel.Below="Tools"  RelativePanel.AlignBottomWithPanel="True" RelativePanel.RightOf="in" VerticalScrollBarVisibility="Disabled">
-                                <TextBox x:Name="LineNoT"  Text="" AcceptsReturn="True" IsSpellCheckEnabled="False" IsTextPredictionEnabled="False" Margin="5,0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" RelativePanel.Below="Tools" RelativePanel.RightOf="in" RelativePanel.AlignBottomWithPanel="True" MinWidth="31" Padding="5,3" MaxWidth="31"/>
-                            </ScrollViewer>
-                            <ScrollViewer x:Name="out" Margin="5,0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" RelativePanel.Below="Tools"  RelativePanel.AlignBottomWithPanel="True" RelativePanel.RightOf="LineNo" VerticalScrollBarVisibility="Disabled">
-                                <TextBox x:Name="outT" AcceptsReturn="True"  Text="" IsSpellCheckEnabled="False" IsTextPredictionEnabled="False" Margin="0" RelativePanel.RightOf="LineNo" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" RelativePanel.Below="Tools"  RelativePanel.AlignBottomWithPanel="True" MinWidth="128" Padding="5,3" />
-                            </ScrollViewer>
-                        </RelativePanel>
-                    </Grid>
-                </Frame>
-            </PivotItem>
-            <PivotItem Header="Instruction Set">
-                <!--Pivot content goes here-->
-                <Frame x:Name="insFrame" HorizontalAlignment="Left" VerticalAlignment="Top">
-                    <!--Pivot content goes here-->
-                    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-                        <ScrollViewer>
-                            <StackPanel x:Name="globalStack">
-                                <StackPanel x:Name="stackPanel" >
-                                    <RelativePanel x:Name="topBar" Padding="5">
-                                        <Button x:Name="button" RelativePanel.RightOf="reload" Click="button_Click" Content="New Instruction" Margin="5,0,0,0"/>
-                                        <Button x:Name="reload" Click="dynamicRealloc" Content="REL" Margin="0,0,0,0"/>
-                                        <ComboBox x:Name="width" RelativePanel.RightOf="button">
-                                            <ComboBoxItem Content="4"/>
-                                            <ComboBoxItem Content="8"/>
-                                            <ComboBoxItem Content="12"/>
-                                            <ComboBoxItem Content="16"/>
-                                        </ComboBox>
-                                        <Button x:Name="generate" Content="Generate" Margin="5,0,5,0" Click="setGen" RelativePanel.RightOf="width" />
-                                        <Button x:Name="Load" Content="Load" RelativePanel.RightOf="generate" Margin="5,0,5,0" Click="loadIx"/>
-                                    </RelativePanel>
-                                </StackPanel>
-                                <TextBox x:Name="script" AcceptsReturn="True"  Text="" IsSpellCheckEnabled="False" IsTextPredictionEnabled="False" Margin="5,0"/>
-                            </StackPanel>
-                        </ScrollViewer>
-                    </Grid>
-                </Frame>
-            </PivotItem>
-            <PivotItem Header="Simulator">
-                <!--Pivot content goes here-->
-                <Frame x:Name="simFrame" HorizontalAlignment="Left" VerticalAlignment="Top">
-                    <!--Pivot content goes here-->
-                    <TextBlock Text="Kevin V1 Simultor"/>
-                </Frame>
-            </PivotItem>
-            <PivotItem Header="Help">
-                <!--Pivot content goes here-->
-                <Frame x:Name="helpFrame" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                    <Grid Padding="0,0,0,10" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <Frame x:Name="cmpFrame" HorizontalAlignment="Left" VerticalAlignment="Top">
                         <!--Pivot content goes here-->
-                        <RelativePanel x:Name="helpStack" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-                            <TextBlock x:Name="tb1" Text="Help and About"/>
-                            <TextBox RelativePanel.AlignBottomWithPanel="True" RelativePanel.Below="tb1" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True"   x:Name="console" Text=""  AcceptsReturn="True"  IsSpellCheckEnabled="False" IsTextPredictionEnabled="False" PlaceholderText="Console&gt;&gt;" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
-                        </RelativePanel>
-                    </Grid>
-                </Frame>
-            </PivotItem>
-        </Pivot>
-    </Grid>
+                        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+                        </Grid>
+                    </Frame>
+                </PivotItem>
+                <PivotItem Header="Assembler" Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}">
+                    <!--Pivot content goes here-->
+                    <Frame x:Name="asmFrame" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+                        <!--Pivot content goes here-->
+                        <Grid Padding="0,0,0,10" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                            <RelativePanel x:Name="boqqq" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                                <RelativePanel x:Name="Tools" Padding="5">
+                                    <Button x:Name="ASSLoad" Content="Open" Margin="0,0,5,0" Click="OpenAsmFile" />
+                                    <Button x:Name="ASSsave" Content="Save" Margin="0,0,5,0"  RelativePanel.RightOf="ASSLoad" Click="SaveASM" />
+                                    <Button x:Name="ISLoad" Content="Load IS" Margin="0,0,0,0" Click="LoadIS" RelativePanel.RightOf="ASSsave"/>
+                                    <TextBox x:Name="Len" Text="Length" RelativePanel.RightOf="ISLoad" Padding="5,3"/>
+                                    <TextBlock x:Name="fX" Text="FileName.txt" RelativePanel.RightOf="Len" Margin="5,0,5,0" RelativePanel.AlignVerticalCenterWith="ISLoad"/>
+                                    <Button x:Name="ASGen" Content="Gen" RelativePanel.RightOf="fX" Click="generateMC"/>
+                                    <CheckBox x:Name="MIF" Content="mif" RelativePanel.RightOf="ASGen" Margin="5,0,0,0" MinWidth="20" Checked="Mcheck" Unchecked="MUcheck"/>
+                                    <CheckBox x:Name="BIN" Content="bin" RelativePanel.RightOf="MIF" Margin="5,0,0,0" MinWidth="20" Checked="Bcheck" Unchecked="BUcheck"/>
+                                </RelativePanel>
+                                <ScrollViewer x:Name="in" Margin="5,0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" RelativePanel.Below="Tools"  RelativePanel.AlignBottomWithPanel="True" HorizontalScrollMode="Disabled" ViewChanged="VC">
+                                    <TextBox x:Name="inT" AcceptsReturn="True"  Text="" IsSpellCheckEnabled="False" IsTextPredictionEnabled="False" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" RelativePanel.Below="Tools"  RelativePanel.AlignBottomWithPanel="True" MinWidth="128" Padding="5,3"/>
+                                </ScrollViewer>
+                                <ScrollViewer x:Name="LineNo" Margin="5,0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" RelativePanel.Below="Tools"  RelativePanel.AlignBottomWithPanel="True" RelativePanel.RightOf="in" VerticalScrollBarVisibility="Disabled">
+                                    <TextBox x:Name="LineNoT"  Text="" AcceptsReturn="True" IsSpellCheckEnabled="False" IsTextPredictionEnabled="False" Margin="5,0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" RelativePanel.Below="Tools" RelativePanel.RightOf="in" RelativePanel.AlignBottomWithPanel="True" MinWidth="31" Padding="5,3" MaxWidth="31"/>
+                                </ScrollViewer>
+                                <ScrollViewer x:Name="out" Margin="5,0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" RelativePanel.Below="Tools"  RelativePanel.AlignBottomWithPanel="True" RelativePanel.RightOf="LineNo" VerticalScrollBarVisibility="Disabled">
+                                    <TextBox x:Name="outT" AcceptsReturn="True"  Text="" IsSpellCheckEnabled="False" IsTextPredictionEnabled="False" Margin="0" RelativePanel.RightOf="LineNo" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" RelativePanel.Below="Tools"  RelativePanel.AlignBottomWithPanel="True" MinWidth="128" Padding="5,3" />
+                                </ScrollViewer>
+                            </RelativePanel>
+                        </Grid>
+                    </Frame>
+                </PivotItem>
+                <PivotItem Header="Instruction Set" Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}">
+                    <!--Pivot content goes here-->
+                    <Frame x:Name="insFrame" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+                        <!--Pivot content goes here-->
+                        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+                            <ScrollViewer>
+                                <StackPanel x:Name="globalStack">
+                                    <StackPanel x:Name="stackPanel" >
+                                        <RelativePanel x:Name="topBar" Padding="5">
+                                            <Button x:Name="button" RelativePanel.RightOf="reload" Click="button_Click" Content="New Instruction" Margin="5,0,0,0"/>
+                                            <Button x:Name="reload" Click="dynamicRealloc" Content="REL" Margin="0,0,0,0"/>
+                                            <ComboBox x:Name="width" RelativePanel.RightOf="button">
+                                                <ComboBoxItem Content="4"/>
+                                                <ComboBoxItem Content="8"/>
+                                                <ComboBoxItem Content="12"/>
+                                                <ComboBoxItem Content="16"/>
+                                            </ComboBox>
+                                            <Button x:Name="generate" Content="Generate" Margin="5,0,5,0" Click="setGen" RelativePanel.RightOf="width" />
+                                            <Button x:Name="Load" Content="Load" RelativePanel.RightOf="generate" Margin="5,0,5,0" Click="loadIx"/>
+                                        </RelativePanel>
+                                    </StackPanel>
+                                    <TextBox x:Name="script" AcceptsReturn="True"  Text="" IsSpellCheckEnabled="False" IsTextPredictionEnabled="False" Margin="5,0"/>
+                                </StackPanel>
+                            </ScrollViewer>
+                        </Grid>
+                    </Frame>
+                </PivotItem>
+                <PivotItem Header="Debug" Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}">
+                    <!--Pivot content goes here-->
+                    <Frame x:Name="helpFrame" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <Grid Padding="0,0,0,10" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                            <!--Pivot content goes here-->
+                            <RelativePanel x:Name="helpStack" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                                <TextBlock x:Name="tb1" Text="Help and About"/>
+                                <TextBox RelativePanel.AlignBottomWithPanel="True" RelativePanel.Below="tb1" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True"   x:Name="console" Text=""  AcceptsReturn="True"  IsSpellCheckEnabled="False" IsTextPredictionEnabled="False" PlaceholderText="Console&gt;&gt;" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
+                            </RelativePanel>
+                        </Grid>
+                    </Frame>
+                </PivotItem>
+            </Pivot>
+        </Grid>
+    </SplitView>
 </Page>

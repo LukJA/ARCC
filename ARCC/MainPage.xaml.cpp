@@ -57,6 +57,7 @@ std::vector<String^> combItems = { "1", "0", "X" };
 std::string ASSGenSet;
 std::string ASSCommands;
 
+
 MainPage::MainPage()
 {
 	InitializeComponent();

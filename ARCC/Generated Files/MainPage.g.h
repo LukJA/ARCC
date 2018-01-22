@@ -46,7 +46,6 @@ namespace ARCC
         private: ::Windows::UI::Xaml::Controls::RelativePanel^ helpStack;
         private: ::Windows::UI::Xaml::Controls::TextBlock^ tb1;
         private: ::Windows::UI::Xaml::Controls::TextBox^ console;
-        private: ::Windows::UI::Xaml::Controls::Frame^ simFrame;
         private: ::Windows::UI::Xaml::Controls::Frame^ insFrame;
         private: ::Windows::UI::Xaml::Controls::StackPanel^ globalStack;
         private: ::Windows::UI::Xaml::Controls::StackPanel^ stackPanel;
@@ -74,6 +73,7 @@ namespace ARCC
         private: ::Windows::UI::Xaml::Controls::Button^ ASGen;
         private: ::Windows::UI::Xaml::Controls::CheckBox^ MIF;
         private: ::Windows::UI::Xaml::Controls::CheckBox^ BIN;
+        private: ::Windows::UI::Xaml::Controls::Frame^ cmpFrame;
     };
 }
 
