@@ -1,0 +1,31 @@
+﻿<Page
+    x:Class="ARCC.Editor"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ARCC"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <ScrollViewer>
+            <StackPanel x:Name="globalStack">
+                <StackPanel x:Name="stackPanel" >
+                    <RelativePanel x:Name="topBar" Padding="5">
+                        <Button x:Name="button" RelativePanel.RightOf="reload" Click="button_Click" Content="New Instruction" Margin="5,0,0,0"/>
+                        <Button x:Name="reload" Click="dynamicRealloc" Content="REL" Margin="0,0,0,0"/>
+                        <ComboBox x:Name="width" RelativePanel.RightOf="button">
+                            <ComboBoxItem Content="4"/>
+                            <ComboBoxItem Content="8"/>
+                            <ComboBoxItem Content="12"/>
+                            <ComboBoxItem Content="16"/>
+                        </ComboBox>
+                        <Button x:Name="generate" Content="Generate" Margin="5,0,5,0" Click="setGen" RelativePanel.RightOf="width" />
+                        <Button x:Name="Load" Content="Load" RelativePanel.RightOf="generate" Margin="5,0,5,0" Click="loadIx"/>
+                    </RelativePanel>
+                </StackPanel>
+                <TextBox x:Name="script" AcceptsReturn="True"  Text="" IsSpellCheckEnabled="False" IsTextPredictionEnabled="False" Margin="5,0"/>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

@@ -20,12 +20,6 @@ namespace ARCC
 		Assembler();
 
 	private:
-		void closeClicked(Platform::Object ^ sender, Windows::UI::Xaml::RoutedEventArgs ^ e);
-		void button_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
-		void setGen(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
-		void dynamicRealloc(Platform::Object ^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
-		void loadIx(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
-		void decodeIx(Platform::String ^ file);
 		void fillLineNo(int len);
 		void openIQ(Platform::String ^ file, Platform::String^ name);
 		void LoadIS(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);

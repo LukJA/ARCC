@@ -10,12 +10,20 @@
 #include "XamlTypeInfo.g.h"
 
 #include "Assembler.xaml.h"
+#include "Compiler.xaml.h"
+#include "Debug.xaml.h"
+#include "Editor.xaml.h"
 #include "App.xaml.h"
 #include "MainPage.xaml.h"
+#include "Settings.xaml.h"
 #include "XamlBindingInfo.g.hpp"
 #include "Assembler.g.hpp"
+#include "Compiler.g.hpp"
+#include "Debug.g.hpp"
+#include "Editor.g.hpp"
 #include "App.g.hpp"
 #include "MainPage.g.hpp"
+#include "Settings.g.hpp"
 
 template<typename T>
 ::Platform::Object^ ActivateType()
@@ -62,24 +70,48 @@ struct TypeInfo
 TypeInfo TypeInfos[] = 
 {
     //   0
-    L"ARCC.MainPage", L"",
-    &ActivateType<::ARCC::MainPage>, nullptr, nullptr, nullptr,
-    2, // Windows.UI.Xaml.Controls.Page
+    L"ARCC.Debug", L"",
+    &ActivateType<::ARCC::Debug>, nullptr, nullptr, nullptr,
+    6, // Windows.UI.Xaml.Controls.Page
     0, 0, ::Windows::UI::Xaml::Interop::TypeKind::Custom,
     true,  false, false, false,
     //   1
-    L"ARCC.Assembler", L"",
-    &ActivateType<::ARCC::Assembler>, nullptr, nullptr, nullptr,
-    2, // Windows.UI.Xaml.Controls.Page
+    L"ARCC.Editor", L"",
+    &ActivateType<::ARCC::Editor>, nullptr, nullptr, nullptr,
+    6, // Windows.UI.Xaml.Controls.Page
     0, 0, ::Windows::UI::Xaml::Interop::TypeKind::Custom,
     true,  false, false, false,
     //   2
+    L"ARCC.Compiler", L"",
+    &ActivateType<::ARCC::Compiler>, nullptr, nullptr, nullptr,
+    6, // Windows.UI.Xaml.Controls.Page
+    0, 0, ::Windows::UI::Xaml::Interop::TypeKind::Custom,
+    true,  false, false, false,
+    //   3
+    L"ARCC.MainPage", L"",
+    &ActivateType<::ARCC::MainPage>, nullptr, nullptr, nullptr,
+    6, // Windows.UI.Xaml.Controls.Page
+    0, 0, ::Windows::UI::Xaml::Interop::TypeKind::Custom,
+    true,  false, false, false,
+    //   4
+    L"ARCC.Settings", L"",
+    &ActivateType<::ARCC::Settings>, nullptr, nullptr, nullptr,
+    6, // Windows.UI.Xaml.Controls.Page
+    0, 0, ::Windows::UI::Xaml::Interop::TypeKind::Custom,
+    true,  false, false, false,
+    //   5
+    L"ARCC.Assembler", L"",
+    &ActivateType<::ARCC::Assembler>, nullptr, nullptr, nullptr,
+    6, // Windows.UI.Xaml.Controls.Page
+    0, 0, ::Windows::UI::Xaml::Interop::TypeKind::Custom,
+    true,  false, false, false,
+    //   6
     L"Windows.UI.Xaml.Controls.Page", L"",
     nullptr, nullptr, nullptr, nullptr,
     -1,
     0, 0, ::Windows::UI::Xaml::Interop::TypeKind::Metadata,
     false, true,  false, false,
-    //   3
+    //   7
     L"Windows.UI.Xaml.Controls.UserControl", L"",
     nullptr, nullptr, nullptr, nullptr,
     -1,
@@ -105,33 +137,33 @@ UINT TypeInfoLookup[] = {
       0,   //   8
       0,   //   9
       0,   //  10
-      0,   //  11
-      0,   //  12
-      0,   //  13
-      1,   //  14
-      2,   //  15
-      2,   //  16
-      2,   //  17
-      2,   //  18
-      2,   //  19
-      2,   //  20
-      2,   //  21
-      2,   //  22
-      2,   //  23
-      2,   //  24
-      2,   //  25
-      2,   //  26
-      2,   //  27
-      2,   //  28
-      2,   //  29
-      3,   //  30
-      3,   //  31
-      3,   //  32
-      3,   //  33
-      3,   //  34
-      3,   //  35
-      3,   //  36
-      4,   //  37
+      1,   //  11
+      2,   //  12
+      2,   //  13
+      5,   //  14
+      6,   //  15
+      6,   //  16
+      6,   //  17
+      6,   //  18
+      6,   //  19
+      6,   //  20
+      6,   //  21
+      6,   //  22
+      6,   //  23
+      6,   //  24
+      6,   //  25
+      6,   //  26
+      6,   //  27
+      6,   //  28
+      6,   //  29
+      7,   //  30
+      7,   //  31
+      7,   //  32
+      7,   //  33
+      7,   //  34
+      7,   //  35
+      7,   //  36
+      8,   //  37
 };
 
 TypeInfo* GetTypeInfo(::Platform::String^ typeName)

@@ -139,12 +139,25 @@
     <ClInclude Include="Assembler.xaml.h">
       <DependentUpon>Assembler.xaml</DependentUpon>
     </ClInclude>
+    <ClInclude Include="Compiler.xaml.h">
+      <DependentUpon>Compiler.xaml</DependentUpon>
+    </ClInclude>
+    <ClInclude Include="Debug.xaml.h">
+      <DependentUpon>Debug.xaml</DependentUpon>
+    </ClInclude>
+    <ClInclude Include="Editor.xaml.h">
+      <DependentUpon>Editor.xaml</DependentUpon>
+    </ClInclude>
+    <ClInclude Include="generic.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="App.xaml.h">
       <DependentUpon>App.xaml</DependentUpon>
     </ClInclude>
     <ClInclude Include="MainPage.xaml.h">
       <DependentUpon>MainPage.xaml</DependentUpon>
+    </ClInclude>
+    <ClInclude Include="Settings.xaml.h">
+      <DependentUpon>Settings.xaml</DependentUpon>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -154,7 +167,19 @@
     <Page Include="Assembler.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Compiler.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Debug.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Editor.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Settings.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
@@ -180,6 +205,16 @@
     <ClCompile Include="Assembler.xaml.cpp">
       <DependentUpon>Assembler.xaml</DependentUpon>
     </ClCompile>
+    <ClCompile Include="Compiler.xaml.cpp">
+      <DependentUpon>Compiler.xaml</DependentUpon>
+    </ClCompile>
+    <ClCompile Include="Debug.xaml.cpp">
+      <DependentUpon>Debug.xaml</DependentUpon>
+    </ClCompile>
+    <ClCompile Include="Editor.xaml.cpp">
+      <DependentUpon>Editor.xaml</DependentUpon>
+    </ClCompile>
+    <ClCompile Include="generic.cpp" />
     <ClCompile Include="MainPage.xaml.cpp">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </ClCompile>
@@ -190,6 +225,9 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Settings.xaml.cpp">
+      <DependentUpon>Settings.xaml</DependentUpon>
     </ClCompile>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

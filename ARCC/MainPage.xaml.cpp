@@ -5,6 +5,8 @@
 #include "pch.h"
 #include "MainPage.xaml.h"
 
+#include <generic.h>
+
 //#include <memory>
 using namespace Windows::Storage;
 using namespace Windows::Storage::Pickers;
@@ -49,4 +51,34 @@ MainPage::MainPage()
 void ARCC::MainPage::burgerclick(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
 {
 	spv->IsPaneOpen = !spv->IsPaneOpen;
+}
+
+
+void ARCC::MainPage::MenuCompiler(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+{
+	LaFrame->Navigate(TypeName(Compiler::typeid));
+}
+
+
+void ARCC::MainPage::MenuAssembler(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+{
+	LaFrame->Navigate(TypeName(Assembler::typeid));
+}
+
+
+void ARCC::MainPage::MenuEditor(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+{
+	LaFrame->Navigate(TypeName(Editor::typeid));
+}
+
+
+void ARCC::MainPage::MenuDebug(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+{
+	LaFrame->Navigate(TypeName(Debug::typeid));
+}
+
+
+void ARCC::MainPage::MenuSettings(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+{
+	LaFrame->Navigate(TypeName(Settings::typeid));
 }

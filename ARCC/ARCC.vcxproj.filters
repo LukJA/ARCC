@@ -16,11 +16,15 @@
     <ClCompile Include="App.xaml.cpp" />
     <ClCompile Include="MainPage.xaml.cpp" />
     <ClCompile Include="pch.cpp" />
+    <ClCompile Include="Assembler.xaml.cpp" />
+    <ClCompile Include="generic.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
     <ClInclude Include="App.xaml.h" />
     <ClInclude Include="MainPage.xaml.h" />
+    <ClInclude Include="Assembler.xaml.h" />
+    <ClInclude Include="generic.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\LockScreenLogo.scale-200.png">
@@ -54,5 +58,9 @@
   <ItemGroup>
     <Page Include="MainPage.xaml" />
     <Page Include="Assembler.xaml" />
+    <Page Include="Editor.xaml" />
+    <Page Include="Compiler.xaml" />
+    <Page Include="Debug.xaml" />
+    <Page Include="Settings.xaml" />
   </ItemGroup>
 </Project>

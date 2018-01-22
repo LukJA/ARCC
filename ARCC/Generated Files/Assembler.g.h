@@ -16,10 +16,8 @@ namespace Windows {
                 ref class RelativePanel;
                 ref class TextBlock;
                 ref class TextBox;
-                ref class StackPanel;
-                ref class Button;
-                ref class ComboBox;
                 ref class ScrollViewer;
+                ref class Button;
                 ref class CheckBox;
             }
         }
@@ -47,16 +45,6 @@ namespace ARCC
         private: ::Windows::UI::Xaml::Controls::TextBlock^ tb1;
         private: ::Windows::UI::Xaml::Controls::TextBox^ console;
         private: ::Windows::UI::Xaml::Controls::Frame^ simFrame;
-        private: ::Windows::UI::Xaml::Controls::Frame^ insFrame;
-        private: ::Windows::UI::Xaml::Controls::StackPanel^ globalStack;
-        private: ::Windows::UI::Xaml::Controls::StackPanel^ stackPanel;
-        private: ::Windows::UI::Xaml::Controls::TextBox^ script;
-        private: ::Windows::UI::Xaml::Controls::RelativePanel^ topBar;
-        private: ::Windows::UI::Xaml::Controls::Button^ button;
-        private: ::Windows::UI::Xaml::Controls::Button^ reload;
-        private: ::Windows::UI::Xaml::Controls::ComboBox^ width;
-        private: ::Windows::UI::Xaml::Controls::Button^ generate;
-        private: ::Windows::UI::Xaml::Controls::Button^ Load;
         private: ::Windows::UI::Xaml::Controls::Frame^ asmFrame;
         private: ::Windows::UI::Xaml::Controls::RelativePanel^ boqqq;
         private: ::Windows::UI::Xaml::Controls::RelativePanel^ Tools;

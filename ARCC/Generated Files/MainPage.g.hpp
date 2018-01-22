@@ -35,6 +35,8 @@ void ::ARCC::MainPage::Connect(int __connectionId, ::Platform::Object^ __target)
         case 2:
             {
                 this->settings = safe_cast<::Windows::UI::Xaml::Controls::Button^>(__target);
+                (safe_cast<::Windows::UI::Xaml::Controls::Button^>(this->settings))->Click += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::ARCC::MainPage::*)
+                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::MenuSettings);
             }
             break;
         case 3:
@@ -47,21 +49,29 @@ void ::ARCC::MainPage::Connect(int __connectionId, ::Platform::Object^ __target)
         case 4:
             {
                 this->MenuButton4 = safe_cast<::Windows::UI::Xaml::Controls::Button^>(__target);
+                (safe_cast<::Windows::UI::Xaml::Controls::Button^>(this->MenuButton4))->Click += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::ARCC::MainPage::*)
+                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::MenuDebug);
             }
             break;
         case 5:
             {
                 this->MenuButton3 = safe_cast<::Windows::UI::Xaml::Controls::Button^>(__target);
+                (safe_cast<::Windows::UI::Xaml::Controls::Button^>(this->MenuButton3))->Click += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::ARCC::MainPage::*)
+                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::MenuEditor);
             }
             break;
         case 6:
             {
                 this->MenuButton2 = safe_cast<::Windows::UI::Xaml::Controls::Button^>(__target);
+                (safe_cast<::Windows::UI::Xaml::Controls::Button^>(this->MenuButton2))->Click += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::ARCC::MainPage::*)
+                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::MenuAssembler);
             }
             break;
         case 7:
             {
                 this->MenuButton1 = safe_cast<::Windows::UI::Xaml::Controls::Button^>(__target);
+                (safe_cast<::Windows::UI::Xaml::Controls::Button^>(this->MenuButton1))->Click += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::ARCC::MainPage::*)
+                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::MenuCompiler);
             }
             break;
         case 8:
