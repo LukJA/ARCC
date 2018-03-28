@@ -1,2 +1,2 @@
 # ARCC
-A Rather Cr\*p Compiler... (for C ish)
+A Working modular assembler UWP program, side project to assist the development of the Modular Blocks system
